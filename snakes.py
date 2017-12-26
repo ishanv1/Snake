@@ -7,6 +7,7 @@ from objects.food import Food
 GAME_WIDTH = 640
 GAME_HEIGHT = 480
 BACKGROUND_COLOR = (0xFF, 0xA5, 0x00)
+BG_IMAGE = pygame.image.load('background.jpg')
 FRAMERATE = 32
 ARROW_KEYS = (pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT)
 
@@ -14,11 +15,7 @@ def initialize_screen():
     # Initialize the screen and game objects.
     pygame.init()
     pygame.display.set_caption('SNAKES - Press <Esc> to Quit, <Space> to Restart')
-    ####
-    # TODO:
-    # Set the key repeat speed (so that holding down an arrow key will
-    # continue to move the snake).
-    ####
+    pygame.key.set_repeat(1, 1)
 
     return pygame.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 
@@ -80,6 +77,7 @@ def play_game():
     while True:
         game_clock.tick(FRAMERATE)
         game_surface.fill(BACKGROUND_COLOR)
+        pygame.display.set_mode((GAME_WIDTH,GAME_HEIGHT)).blit(BG_IMAGE, [0, 0])
 
         # Detect and respond to user keypresses.
         for e in pygame.event.get():
@@ -124,6 +122,7 @@ def restart(game_surface):
     """
     # Clear the background.
     game_surface.fill(BACKGROUND_COLOR)
+    pygame.display.set_mode((GAME_WIDTH,GAME_HEIGHT)).blit(BG_IMAGE, [0, 0])
 
     # Draw the game over message.
     text = 'GAME OVER'

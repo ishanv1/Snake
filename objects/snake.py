@@ -84,13 +84,13 @@ class Snake(object):
         head_x, head_y = old_head_pos
         if (key == pygame.K_UP):
             head_y = head_y - self.SNAKE_UNIT
+            #print("up pressed")
         elif (key == pygame.K_DOWN):
             head_y = head_y + self.SNAKE_UNIT
-        ###
-        # TODO:
-        # Handle the remaining movement keys (as defined in ARROW_KEYS
-        # in snakes.py).
-        ###
+        elif (key == pygame.K_LEFT):
+            head_x = head_x - self.SNAKE_UNIT
+        elif (key == pygame.K_RIGHT):
+            head_x = head_x + self.SNAKE_UNIT
         else:
             return
 
